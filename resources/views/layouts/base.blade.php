@@ -7,7 +7,7 @@
     <title>@yield('title')</title>
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -19,6 +19,9 @@
         </div>
     </section>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../jquery.js"></script>
+    <script src="../ajax.js"></script>
+    <script src="../js/jquery.min.js"></script>
 </body>
 
 </html>

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PoliceStation extends Model
 {
     use HasFactory;
+    protected $guarded=[];
+
+    public function atm()
+    {
+        return $this->belongsTo(Atm::class);
+    }
 }

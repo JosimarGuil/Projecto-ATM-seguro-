@@ -14,12 +14,10 @@ return new class extends Migration
         Schema::create('police_stations', function (Blueprint $table) {
             $table->id();
             $table->integer('phone1');
-            $table->integer('phone2');
-            $table->string('serialNumber');
-            $table->foreignId('countrie_id')->constrained('countries')->onDelete('cascade');
-            $table->foreignId('state_id')->constrained('states')->onDelete('cascade');
-            $table->string('bairro');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->integer('phone2')->nullable();
+            $table->foreignId('atm_id')->constrained('atms')->onDelete('cascade');
+            $table->string("responsavel");
+            $table->string('Localização');
             $table->timestamps();
         });
     }

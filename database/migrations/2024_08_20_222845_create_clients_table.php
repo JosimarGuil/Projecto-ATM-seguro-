@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('bairro');
             $table->string('declaration');
             $table->string('phone')->unique();
-            $table->text('location');
             $table->timestamps();
         });
     }
