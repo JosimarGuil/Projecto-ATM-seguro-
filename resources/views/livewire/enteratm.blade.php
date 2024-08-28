@@ -17,7 +17,7 @@ new class extends Component {
     public function mount($id,$atm)
     {
         $this->atm= Atm::with(['bank','countrie','state'])->findOrFail($atm);
-        $this->clicntId=Client::findOrFail($id);
+        $this->clicntId=Client::with('user')->findOrFail($id);
     }
     
     public function digitEnter($number)
@@ -31,20 +31,44 @@ new class extends Component {
         $this->enter= substr($this->enter,0,strlen($this->enter)-1);
         $this->sms=false;
     }
-    
+
+
    public function login()
    {
       if($this->clicntId->password === (int)$this->enter){
         $user=User::where('id',$this->clicntId->user_id);
-    Auth::login($user);
-
+     
+        if (Auth::check()) {
+            return  redirect()->route('admin');
+        } else {
+            Auth::login($user);
+            return  redirect()->route('dashboard');
+        }
+       
       }else{
             $this->cont += 1;
             $this->sms=true;
       }
        if($this->cont > 3){
             // vai mandar sms 
-       }
+            $body="
+            AVISO! SecuryBANK"."\n\r".
+        " -----------------------------
+            Tentativa de invasão de conta
+            -----------------------------".
+            "Localização ATM: ".$this->atm->bairro."\n\r".
+            "Dono de conta: ".$this->clicntId->user->name."\n\r". 
+            "Telefone: ".$this->clicntId->phone;
+
+            $account_sid = env("TWILIO_ACCOUNT_SID");
+            $auth_token = env("TWILIO_AUTH_TOKEN");
+            $twilio_number = env("TWILIO_PHONE_NUMBER");
+            $client = new Twilio\Rest\Client($account_sid, $auth_token);
+            $client->messages->create("+244940927292", 
+                [   'from' => $twilio_number,
+                    'body' => $body] 
+                );
+                } 
    }
 }; ?>
 <div>

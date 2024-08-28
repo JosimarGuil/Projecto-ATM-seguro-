@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SendController;
 use App\Models\Atm;
 use App\Models\Client;
 use Illuminate\Support\Facades\Route;
@@ -12,7 +13,8 @@ Route::get('atm/{id}',
   }
 )->name('atm');
 
-Route::view('gerador/{id}', 'gerador')->name('gerador');
+Route::get('sendMensage/{$id}',[SendController::class,'sendMessage'])->name('send');
+Route::view('gerador/{id}/{atm}', 'gerador')->name('gerador');
 Route::get('authpi/{id}/{atm}', function($id,$atm){
 
     $Client= Client::find($id);

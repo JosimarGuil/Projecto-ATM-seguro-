@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('phone1');
             $table->integer('phone2')->nullable();
             $table->string("responsavel");
+            $table->foreignId('atm_id')->constrained('atms')->onDelete('cascade');
             $table->string('Localização');
             $table->timestamps();
         });
