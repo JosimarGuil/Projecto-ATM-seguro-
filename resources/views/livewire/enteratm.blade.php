@@ -26,7 +26,7 @@ new class extends Component {
     <div class="mt-16 flex grid grid-cols-5 gap-8 justify-between">
         <div class=" grid col-span-3 rounded-lg px-8 py-8 border border-gray-600 ">
             <div class="avatar flex justify-between  py-4">
-                <div class="   w-48 h-28 r">
+                <div class="  r">
                     <img class="rounded-lg" src="../storage/{{$atm->bank->logo}}" />
                 </div>
                 <ul>
