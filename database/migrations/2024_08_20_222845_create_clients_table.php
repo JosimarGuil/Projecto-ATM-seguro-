@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('bi');
             $table->foreignId('countrie_id')->constrained('countries')->onDelete('cascade');
+            $table->foreignId('bank_id')->constrained('banks')->onDelete('cascade');
             $table->foreignId('state_id')->constrained('states')->onDelete('cascade');
             $table->string('bairro');
             $table->string('declaration');

@@ -31,9 +31,13 @@ class ClientResource extends Resource
                 Forms\Components\Select::make('user_id')
                 ->label('Usuário')
                    ->relationship('user','name',
-                   modifyQueryUsing: fn(Builder $query)=> $query->where('perfil','=','Cliente'))
+                   modifyQueryUsing: fn(Builder $query)=> $query->where('perfil','=','client'))
                     ->required(),
-                    
+                    Forms\Components\Select::make('bank_id')
+                    ->label('Selecione o banco')
+                          ->Relationship('bank','name')
+                        ->required()
+                        ->columnSpanFull(),
                     Forms\Components\Select::make('countrie_id')
                     ->label('País')
                    ->relationship('countrie','name',
@@ -58,6 +62,7 @@ class ClientResource extends Resource
                     ->columnSpanFull(),
                     Forms\Components\FileUpload::make('foto')
                     ->required()
+                    ->imageEditor()
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('declaration')
                     ->label('Declaração')
@@ -71,35 +76,24 @@ class ClientResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('foto')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
+                Tables\Columns\ImageColumn::make('foto')     
+                ->circular(),         
+                Tables\Columns\TextColumn::make('user.name')
+                ->label('Cliente')
                     ->sortable(),
+                    
                 Tables\Columns\TextColumn::make('bi')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('countrie_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('countrie.name')
+                    ->label('País')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('state_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('state.name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('bairro')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('declaration')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
+                    ->label('Telefone')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

@@ -54,7 +54,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->navigationItems([
                 NavigationItem::make('Gerar Cartão')
-                    ->url('https://laraveldaily.com', shouldOpenInNewTab: true)
+                    ->url('/gerarQrCode', shouldOpenInNewTab: true)
                     ->icon('heroicon-o-link')
             ])
             ->authMiddleware([

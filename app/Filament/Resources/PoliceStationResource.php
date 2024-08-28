@@ -23,16 +23,19 @@ class PoliceStationResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('atm_id')
+                ->label('Associar atm')
+                    ->Relationship('atm','id')
+                    ->required()
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('phone1')
                     ->tel()
-                    ->label('Telefone')
-                    ->required()
-                    ->numeric(),
+                    ->label('Telefone 1')
+                    ->required(),
                 Forms\Components\TextInput::make('phone2')
                 ->label('Telefone 2')
                     ->tel()
-                    ->required()
-                    ->numeric(),
+                    ->required(),
                 Forms\Components\TextInput::make('responsavel')
                 ->label('Responsável da Esquadra')
                     ->required(),
@@ -46,33 +49,17 @@ class PoliceStationResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('atm.id')
+                ->label('Atm associado')
+                ->searchable(),
                 Tables\Columns\TextColumn::make('phone1')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('phone2')
-                    ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('serialNumber')
+                    Tables\Columns\TextColumn::make('responsavel')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('countrie_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('state_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('bairro')
+                Tables\Columns\TextColumn::make('Localização')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use WisdomDiala\Countrypkg\Models\Country;
 use WisdomDiala\Countrypkg\Models\State;
 
-class client extends Model
+class Client extends Model
 {
     use HasFactory;
     protected $guarded=[];
@@ -26,5 +26,10 @@ class client extends Model
     public function state()
     {
         return $this->belongsTo(State::class);
+    }
+
+    public function bank()
+    {
+        return $this->belongsTo(Bank::class);
     }
 }
