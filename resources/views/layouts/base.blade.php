@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://github.com/MatheusPrudente/QRCODE/blob/main/style.css"   type="text/css" >
+
    <style>
     .wrapper{
   height: 265px;
@@ -109,6 +110,7 @@ header p{
         </div>
     </section>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/html5-qrcode"></script>
  <script>
     const wrapper = document.querySelector(".wrapper"),
 qrInput = wrapper.querySelector(".form input"),
