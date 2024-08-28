@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreignId('state_id')->constrained('states')->onDelete('cascade');
             $table->string('bairro');
             $table->string('declaration');
+            $table->integer('password')->nullable();
             $table->string('phone')->unique();
             $table->timestamps();
         });

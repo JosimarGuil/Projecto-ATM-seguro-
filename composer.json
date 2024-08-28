@@ -13,6 +13,7 @@
         "livewire/volt": "^1.0",
         "propaganistas/laravel-phone": "^5.3",
         "robsontenorio/mary": "^1.35",
+        "twilio/sdk": "^8.2",
         "wisdom-diala/countrypkg-laravel": "^1.0"
     },
     "require-dev": {

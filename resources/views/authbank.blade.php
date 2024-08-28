@@ -3,6 +3,6 @@
 
 @section('content')
 <div>
-  <livewire:enteratm :id="$atm">
+  <livewire:enteratm :id="$id" :atm="$atm">
 </div>
 @endsection

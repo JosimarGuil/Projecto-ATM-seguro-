@@ -27,7 +27,6 @@ class ClientResource extends Resource
                 Forms\Components\TextInput::make('name')
                      ->label('Nome')
                     ->required(),
-               
                 Forms\Components\Select::make('user_id')
                 ->label('Usuário')
                    ->relationship('user','name',
